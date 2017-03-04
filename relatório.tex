@@ -1,0 +1,439 @@
+\documentclass[a4paper, 12pt, portuguese]{article}
+
+\usepackage[portuguese]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+
+
+
+\title{Relatório LI1}
+
+\author{Luís Fernandes A74748, Ricardo Certo A75315}
+
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+\section{Introdução}
+
+No âmbito da Unidade Curricular de Laboratórios de Informática I, foi-nos proposto a elaboração de uma réplica do jogo 'LightBot', onde para isso utilizaríamos a linguagem de programação Haskell.
+
+O projeto está dividido em duas fases, sendo que a primeira se encontra dividida em três tarefas, onde, em cada uma delas, um problema menor teria de ser resolvido, compondo assim a Tarefa A que consiste na verificação do input, ou seja, se este é válido ou não, a Tarefa B em que o objetivo era verificar se o primeiro comando pode ou não ser executado e a Tarefa C em que teríamos de verificar se com a lista de comandos fornecida o jogo é ou não concluído, e a segunda fase composta por mais duas tarefas, sendo a primeira a Tarefa D em que o principal objetivo é construir a linha de comandos para que o Robot complete o jogo e por fim a Tarefa E que é, basicamente, apresentar uma versão em três dimensões do tabuleiro fornecido. 
+
+\section{Objetivo do Trabalho/Resumo}
+
+O objetivo deste trabalho é aplicar os conhecimentos obtidos, em particular nas aulas de Programação Funcional, sobre a linguagem de programação que estamos a utilizar (Haskell), tentando assim de uma forma divertida (aplicar conhecimentos no desenvolvimento de um jogo) aprender mais e ganhar experiência em execuções neste tipo de projetos.
+
+\section{Análise do Problema}
+
+\subsection{Tarefa A}
+\begin{enumerate}
+\item Objetivo
+
+O objetivo na Tarefa A era verificar se o mapa (com mapa subentende-se todo o input, tabuleiro de jogo, linha da posição inicial e orientação e a linha dos comandos) é ou não válido.
+
+\item Breve Descrição
+
+Existe uma variedade de erros possíveis de acontecer para a Tarefa A dar erro no output, poderíamos ter um erro no tabuleiro de jogo, um erro na linha da posição inicial e orientação ou então ainda na linha dos comandos, sendo isto, o que nos foi proposto seria que o output na Tarefa A fosse, em casos válidos, ["OK"], e em casos de falha, a linha do mapa onde existe este erro. 
+
+\end{enumerate}
+
+\subsection{Tarefa B}
+\begin{enumerate}
+\item Objetivo
+
+Na Tarefa B o objetivo era verificar se o primeiro comando da linha dos comandos era ou não possível de se efetuar.
+
+\item Breve Descrição
+
+No jogo existem apenas cinco tipos de comandos, 'A' (Avançar), 'S' (Saltar), 'L' (Luz), 'D' (Direita), 'E' (Esquerda). Dependendo do comando que nos fosse fornecido em primeiro lugar na linha de comandos, teríamos de verificar se ele seria ou não possível de efetuar, exemplo: O comando 'L' só é possível de efetuar caso a posição inicial do robot fosse numa casa com lâmpada, de maneira a poder ser acesa.
+
+Para cada comando existe uma lista de restrições que os torna possíveis ou não de ser efetuados, desta forma, nesta Tarefa, o proposto foi que, em casos possíveis de efetuar o comando dado, o output seria a posição que o robot tomaria após efetuar esse comando, em casos de falha o output correspondente seria ["ERRO"].
+
+\end{enumerate}
+
+\subsection{Tarefa C}
+\begin{enumerate}
+\item{Objetivo}
+
+Na Tarefa C o objetivo era, sucintamente, repetir várias vezes a Tarefa B, ou seja, nesta Tarefa, teríamos de percorrer toda a linha dos comandos e verificar se com tal linha de comandos dada, o jogo ficaria concluído ou não.
+
+\item{Breve Descrição}
+
+Nesta Tarefa, acabaríamos por utilizar, em certos pontos, a Tarefa B, sendo que teríamos de aplicar as mesmas condições aplicadas na Tarefa B só que desta vez, em vez de serem aplicadas apenas ao primeiro comando, seriam aplicadas a toda a linha dos comandos, um a um.
+
+Como output desejado, em casos de todas as lâmpadas serem acessas (Objetivo do jogo original 'LightBot'), o resultado seria um output com as coordenadas das lâmpadas acessas e com a palavra "FIM" seguida do número de comandos que foram utilizados para concluir o jogo. Em caso de as lâmpadas não terem sido todas acessas, ou seja, o jogo não estar concluído, o output será ["INCOMPLETO"].
+
+\end{enumerate}
+
+\subsection{Tarefa D}
+\begin{enumerate}
+\item{Objetivo}
+
+Na Tarefa D tínhamos como objetivo criar uma linha de comandos válida de forma a que o Robot percorresse o tabuleiro e acendesse todas as lâmpadas existentes neste mesmo tabuleiro, conseguindo portante, concluir o jogo.
+
+\item{Breve Descrição}
+
+Nesta Tarefa tínhamos de desenvolver uma lista de comandos de forma a que o Robot consiga chegar ao fim do jogo, para isso tivemos de desenvolver várias funções que permitissem ao nosso Robot avançar de forma a acender cada luz presente no tabuleiro, evitando obstáculos.
+
+Iniciamos o processo por casos mais básicos onde o Robot teria apenas de avançar ou saltar e facilmente completaria o jogo, mas logo descobrimos casos mais complexos onde o nosso Robot teria de evitar, por exemplo, muros e conseguir da mesma forma alcançar as lâmpadas. Nalguns casos os mapas são impossíveis de acabar e então o jogo não será possível de ser realizado com sucesso.
+
+\end{enumerate}
+
+\subsection{Tarefa E}
+\begin{enumerate}
+\item{Objetivo}
+
+Na Tarefa E pretendemos utilizar a linguagem de programação até agora usada, Haskell, para produzir um xhtml que possa ser lido no interpretador do x3DOM, criando assim uma página web.
+
+\item{Breve Descrição}
+
+A Tarefa E consistiu um criar um código de forma a obtermos uma página web que nos permite ver o tabuleiro dado bem como a posição inicial e orientação do Robot em três dimensões.
+
+Esta Tarefa permitiu-nos conhecer a plataforma do x3DOM e algumas das possibilidades que esta mesma plataforma nos proporciona, expandindo assim um pouco o nosso conhecimento à cerca de desenvolvimento em html.
+
+\end{enumerate}
+
+\section{Testes}
+
+\subsection{Tarefa A}
+
+Ficam aqui alguns exemplos de possíveis testes para a Tarefa A do nosso projeto:
+
+\begin{enumerate}
+
+\vspace{1 mm}
+
+\item\textbf{Resultados Válidos}
+
+\textbf{Input:}
+
+\vspace{2 mm}
+
+\textit{aaaba}
+
+\textit{aAbbb}
+
+\textit{abCaa}
+
+\textit{0 1 S}
+
+\textit{AAALSAALS}
+
+\vspace{2 mm}
+
+\textbf{Output:}
+
+\vspace{2 mm}
+
+\textit{["OK"]}
+
+\vspace{2 mm}
+
+\item\textbf{Análise dos Erros}
+\begin{enumerate}
+
+\item
+
+\textbf{Input:}
+
+\vspace{2 mm}
+
+\textit{aBb}
+
+\textit{aab}
+
+\textit{Aac}
+
+\textit{3 0 N}
+
+\textit{LSAEALSEAAL}
+
+\vspace{2 mm}
+
+\textbf{Output:}
+
+\vspace{2 mm}
+
+\textit{["4"]}
+
+\vspace{4 mm}
+
+Este caso não respeita a condição de que as coordenadas iniciais do Robot têm de pertencer ao tabuleiro, o que não acontece neste caso, pois não existe no tabuleiro a posição (3, 0).
+
+\vspace{2 mm}
+
+\item
+
+\textbf{Input:}
+
+\vspace{2 mm}
+
+\textit{0 1 N}
+
+\textit{aaba}
+
+\textit{aaCa}
+
+\textit{babb}
+
+\textit{0 2 S}
+
+\textit{ASASSDL}
+
+\vspace{2 mm}
+
+\textbf{Output:}
+
+\vspace{2 mm}
+
+\textit{["1"]}
+
+\vspace{4 mm}
+
+A condição de que primeiro no input surgem as linhas do tabuleiro e só depois a linha da posição inicial e orientação é que não é respeitada neste caso.
+
+\end{enumerate}
+\end{enumerate}
+
+\subsection{Tarefa B}
+
+Ficam aqui alguns exemplos de possíveis testes para a Tarefa B do nosso projeto:
+
+\begin{enumerate}
+
+\vspace{1 mm}
+
+\item\textbf{Resultados Válidos}
+
+\textbf{Input:}
+
+\vspace{2 mm}
+
+\textit{abab}
+
+\textit{acca}
+
+\textit{Acca}
+
+\textit{1 0 N}
+
+\textit{ASDESAL}
+
+\vspace{2 mm}
+
+\textbf{Output:}
+
+\vspace{2 mm}
+
+\textit{["1 1 N"]}
+
+\vspace{2 mm}
+
+\item\textbf{Análise dos Erros}
+\begin{enumerate}
+
+\item
+
+\textbf{Input:}
+
+\vspace{2 mm}
+
+\textit{abab}
+
+\textit{acca}
+
+\textit{Abca}
+
+\textit{1 0 N}
+
+\textit{ASDESAL}
+
+\vspace{2 mm}
+
+\textbf{Output:}
+
+\vspace{2 mm}
+
+\textit{["ERRO"]}
+
+\vspace{4 mm}
+
+Neste caso específico, tendo em conta a posição inicial do Robot e o primeiro comando, 'A', o Robot deveria avançar, o que não pode acontecer porque a posição para onde ele se dirigia está um nível acima da posição onde ele se encontra.
+
+\vspace{2 mm}
+
+\item
+
+\textbf{Input:}
+
+\vspace{2 mm}
+
+\textit{aAaa}
+
+\textit{Baaa}
+
+\textit{bcda}
+
+\textit{2 0 E}
+
+\textit{SAADL}
+
+\vspace{2 mm}
+
+\textbf{Output:}
+
+\vspace{2 mm}
+
+\textit{["ERRO"]}
+
+\vspace{4 mm}
+
+O Robot encontra-se numa posição que está no nível básico ('a') e quer 'S' (Saltar) para a próxima posição, que também é do nível básico, o que não pode acontecer pois ele teria era de Avançar.
+
+\end{enumerate}
+\end{enumerate}
+
+\subsection{Tarefa C}
+
+Ficam aqui alguns exemplos de possíveis testes para a Tarefa C do nosso projeto:
+
+\begin{enumerate}
+
+\vspace{1 mm}
+
+\item\textbf{Resultados Válidos}
+
+\textbf{Input:}
+
+\vspace{2 mm}
+
+\textit{abab}
+
+\textit{acca}
+
+\textit{Acca}
+
+\textit{3 2 O}
+
+\textit{SSESADSL}
+
+\vspace{2 mm}
+
+\textbf{Output:}
+
+\vspace{2 mm}
+
+\textit{0 0}
+
+\textit{FIM 8}
+
+\vspace{2 mm}
+
+\item\textbf{Análise dos Erros}
+\begin{enumerate}
+
+\item
+
+\textbf{Input:}
+
+\vspace{2 mm}
+
+\textit{abab}
+
+\textit{accA}
+
+\textit{Abca}
+
+\textit{3 2 N}
+
+\textit{ESSSEAALESSS}
+
+\vspace{2 mm}
+
+\textbf{Output:}
+
+\vspace{2 mm}
+
+\textit{["INCOMPLETO"]}
+
+\vspace{4 mm}
+
+O que acontece neste caso é que o Robot executa toda a lista de comandos com sucesso, mas acaba os comandos sem acender todas as luzes presentes no mapa, não concluindo desta forma o jogo e por isso produzindo o output "INCOMPLETO".
+
+\vspace{2 mm}
+
+\end{enumerate}
+\end{enumerate}
+
+\subsection{Tarefa D}
+
+Ficam aqui alguns exemplos de possíveis testes para a Tarefa D do nosso projeto:
+
+\begin{enumerate}
+
+\vspace{1 mm}
+
+\item\textbf{Resultados Válidos}
+
+\textbf{Input:}
+
+\vspace{2 mm}
+
+\textit{acca}
+
+\textit{abbb}
+
+\textit{Cbca}
+
+\textit{3 2 O}
+
+\vspace{2 mm}
+
+\textbf{Output:}
+
+\vspace{2 mm}
+
+\textit{"ESDAAEADSL"}
+
+\vspace{2 mm}
+
+\item
+
+\textbf{Input:}
+
+\vspace{2 mm}
+
+\textit{abab}
+
+\textit{accA}
+
+\textit{Abca}
+
+\textit{3 2 N}
+
+\vspace{2 mm}
+
+\textbf{Output:}
+
+\vspace{2 mm}
+
+\textit{"EESLDDSESSSEAAL"}
+
+\vspace{2 mm}
+
+\end{enumerate}
+
+
+\section{Conclusão}
+
+Para concluir, este foi um excelente trabalho para aplicar e adquirir novos conhecimentos sobre a linguagem de programação Haskell, ajudando-nos assim, com trabalho prático, a entender melhor as possibilidades que existem para a aplicação de tais conhecimentos desta área do nosso curso.
+
+De início foi estranho pois não estávamos à espera de um projeto já alguma coisa elaborado numa fase tão precoce da nossa aprendizagem. Acabamos por conseguir ir fazendo aos poucos, sempre a aprender novos conceitos e técnicas e achamos que acabou por correr relativamente bem.
+
+Foi um projeto muito interessante de se realizar e que serviu bastante não só para a própria disciplina de Laboratórios de Informática I, mas tambem para a aplicação dos conhecimentos adquiridos em Progamação Funcional.
+
+\end{document}
